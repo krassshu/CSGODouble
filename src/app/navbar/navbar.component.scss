@@ -1,0 +1,31 @@
+@use "../../styles.scss" as c;
+
+.nav {
+  height: 70px;
+  padding: 10px;
+  background-color: c.$light-gray-bgc;
+  border-bottom: 1px solid c.$border-light-gray;
+  z-index: 999;
+  &-con {
+    display: flex;
+    justify-content: space-between;
+    margin: 0 14%;
+    &__bookmarks {
+      display: flex;
+      justify-content: space-around;
+      align-items: center;
+      width: 70%;
+      &-pages {
+        min-width: fit-content;
+        padding: 18px 10px;
+        font-size: 16px;
+      }
+      &-logo {
+        align-self: center;
+        padding: 18px 10px;
+        font-size: 21px;
+        color: c.$light-text-color;
+      }
+    }
+  }
+}

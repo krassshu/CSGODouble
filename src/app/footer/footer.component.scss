@@ -1,0 +1,49 @@
+@use "../../styles.scss" as c;
+
+.footer {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  height: 70px;
+  padding: 0 12px;
+  background-color: c.$light-gray-bgc;
+  border: 1px solid c.$border-light-gray;
+  font-size: 14px;
+  color: c.$light-text-color;
+  .socials {
+    display: flex;
+    gap: 8px;
+    a {
+      display: block;
+      width: 40px;
+      height: 40px;
+      border-radius: 8px;
+    }
+    .facebook {
+      background-image: url("../../assets/img/svg/facebook.svg");
+    }
+    .twitter {
+      background-image: url("../../assets/img/svg/twitter.svg");
+    }
+    .steam {
+      background-image: url("../../assets/img/svg/steam.svg");
+    }
+  }
+  .info {
+    display: flex;
+    &__details {
+      display: flex;
+      gap: 12px;
+      margin-left: 8px;
+    }
+    a {
+      color: rgb(42, 145, 209);
+    }
+  }
+  .steam-analyst {
+    background-color: rgb(32, 33, 37);
+    a img {
+      width: 134px;
+    }
+  }
+}

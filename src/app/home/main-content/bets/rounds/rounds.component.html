@@ -1,0 +1,77 @@
+<div class="rounds">
+  <div class="round rounds__red">
+    <div class="round__button">
+      <button type="button">1 to 7</button>
+    </div>
+    <div class="round__details">
+      <span>0</span>
+    </div>
+    <div class="round__list">
+      <div class="round__list-total">
+        <span>Total bet</span>
+        <span>0</span>
+      </div>
+      <div class="round__list-players">
+        <ul>
+          <li *ngFor="let player of players">
+            <a href="#" class="player">
+              <img src="{{ player.avatar }}" alt="" />
+              <i>{{ player.user }}</i>
+            </a>
+            <span>{{ player.amount }}</span>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </div>
+  <div class="round rounds__green">
+    <div class="round__button">
+      <button type="button">0</button>
+    </div>
+    <div class="round__details">
+      <span>0</span>
+    </div>
+    <div class="round__list">
+      <div class="round__list-total">
+        <span>Total bet</span>
+        <span>0</span>
+      </div>
+      <div class="round__list-players">
+        <ul>
+          <li>
+            <a href="#" class="player">
+              <img src="" alt="" />
+              <i>Krashu</i>
+            </a>
+            <span>1000</span>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </div>
+  <div class="round rounds__black">
+    <div class="round__button">
+      <button type="button">8 to 14</button>
+    </div>
+    <div class="round__details">
+      <span>0</span>
+    </div>
+    <div class="round__list">
+      <div class="round__list-total">
+        <span>Total bet</span>
+        <span>0</span>
+      </div>
+      <div class="round__list-players">
+        <ul>
+          <li>
+            <a href="#" class="player">
+              <img src="" alt="" />
+              <i>Krashu</i>
+            </a>
+            <span>1000</span>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</div>

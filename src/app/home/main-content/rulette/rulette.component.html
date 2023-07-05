@@ -1,0 +1,30 @@
+<div class="rolling">
+  <div class="rolling__progress">
+    <div
+      class="rolling__progress-bar"
+      [ngStyle]="{ width: progress + '%' }"
+    ></div>
+    <span class="rolling__progress-timer">
+      Rolling in {{ seconds.toString().padStart(2, "0") }}.{{
+        milliseconds.toString().padStart(3, "0").slice(0, 2)
+      }}...
+    </span>
+  </div>
+  <div
+    class="rolling__rulette"
+    [ngStyle]="{ 'background-position': '-' + roulettePosition + 'px 0' }"
+    [ngClass]="{ spin_animation: spinAnimation }"
+  ></div>
+
+  <div class="rolling__jackpot">
+    <ul class="rolling__jackpot-balls">
+      <li
+        class="rolling__jackpot-balls--ball"
+        *ngFor="let balls of rollHistory.slice(rollHistory.length - 10).reverse()"
+        [ngClass]="getBallsClass(balls)"
+      >
+        <span>{{ balls }}</span>
+      </li>
+    </ul>
+  </div>
+</div>

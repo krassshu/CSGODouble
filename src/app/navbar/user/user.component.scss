@@ -1,0 +1,72 @@
+.user {
+  display: flex;
+  height: 100%;
+  min-width: 180px;
+  &__logout {
+    display: none;
+    a {
+      img {
+        width: 100px;
+      }
+    }
+  }
+  &__login {
+    position: relative;
+    display: flex;
+    align-items: center;
+    width: 100%;
+    img {
+      width: 30px;
+      height: 30px;
+      margin-right: 4px;
+      border-radius: 4px;
+    }
+    &-options {
+      display: flex;
+      align-items: center;
+      cursor: pointer;
+      color: rgb(115, 115, 115);
+      &--nick {
+        font-size: 16px;
+      }
+    }
+    &-dropdown {
+      position: absolute;
+      top: 59px;
+      opacity: 0;
+      width: fit-content;
+      font-size: 14px;
+      line-height: 28px;
+      padding: 0 6px;
+      background-color: rgb(247, 247, 247);
+      border: 1px solid rgb(235, 235, 235);
+      border-top: none;
+      z-index: 9;
+      &--item {
+        a {
+          display: flex;
+          align-items: center;
+          mat-icon {
+            width: fit-content;
+            height: fit-content;
+            font-size: 16px;
+          }
+        }
+      }
+    }
+  }
+}
+.active {
+  animation: dropdown 0.2s ease-in forwards;
+}
+
+@keyframes dropdown {
+  0% {
+    opacity: 0;
+    transform: scaleZ(0);
+  }
+  100% {
+    opacity: 1;
+    transform: scaleZ(1);
+  }
+}

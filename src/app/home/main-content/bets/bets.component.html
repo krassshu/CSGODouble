@@ -1,0 +1,27 @@
+<div class="bets">
+  <div class="bets__amount">
+    <p>Balance: {{ balance }} <mat-icon fontIcon="autorenew"></mat-icon></p>
+
+    <div class="your-bet">
+      <ul>
+        <li>
+          <button style="border-radius: 4px 0 0 4px" type="button">
+            Clear
+          </button>
+        </li>
+        <li><button type="button">Last</button></li>
+        <li><button type="button">+1</button></li>
+        <li><button type="button">+10</button></li>
+        <li><button type="button">+100</button></li>
+        <li><button type="button">+1000</button></li>
+        <li><button type="button">1/2</button></li>
+        <li><button type="button">X2</button></li>
+        <li>
+          <button style="border-radius: 0 4px 4px 0" type="button">MAX</button>
+        </li>
+      </ul>
+      <input type="text" placeholder="Bet amount..." />
+    </div>
+  </div>
+  <app-rounds></app-rounds>
+</div>

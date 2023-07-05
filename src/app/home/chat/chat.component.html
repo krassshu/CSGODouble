@@ -1,0 +1,22 @@
+<aside class="chat">
+  <div class="chat__bar">
+    <mat-icon
+      fontIcon="sms"
+      [ngClass]="{ active: isActive }"
+      (click)="toggleHide()"
+    ></mat-icon>
+  </div>
+  <div [ngClass]="chatClasses" class="chat__room">
+    <mat-form-field class="chat__room-form">
+      <mat-select [(value)]="selected" class="chat__room-form--select">
+        <mat-option value="global">Main Room</mat-option>
+        <mat-option value="pol">Polski</mat-option>
+        <mat-option value="eng">English</mat-option>
+        <mat-option value="germ">Deutsche</mat-option>
+      </mat-select>
+    </mat-form-field>
+    <app-chat-room></app-chat-room>
+    <input type="text" placeholder="Type here to chat..." />
+    <p>Users Online: 2520</p> 
+  </div>
+</aside>
