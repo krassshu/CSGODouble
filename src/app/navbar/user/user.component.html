@@ -1,21 +1,21 @@
 <div class="user">
-  <div class="user__logout">
-    <a href="#">
+  <div class="user__logout" *ngIf="!isLogin">
+    <a (click)="onLogin()">
       <img
         src="../../../assets/img/steam_login.png"
         alt="sing in through steam"
       />
     </a>
   </div>
-  <div class="user__login">
-    <img src="../../../assets/img/csdouble_icon.png" alt="user avatar" />
+  <div class="user__login" *ngIf="isLogin">
+    <img src="{{ player.avatar }}" alt="user avatar" />
     <div class="user__login-options" tabindex="0" (click)="toggleDropdown()">
-      <span class="user__login-options--nick">krashu</span>
+      <span class="user__login-options--nick">{{ player.user }}</span>
       <mat-icon fontIcon="arrow_drop_down"></mat-icon>
     </div>
     <ul class="user__login-dropdown" [ngClass]="{ active: isDropdownActive }">
       <li class="user__login-dropdown--item">
-        <a href="#">
+        <a [routerLink]="['/deposit']">
           <mat-icon fontIcon="account_balance_wallet"></mat-icon>
           Add balance</a
         >
@@ -27,7 +27,7 @@
         >
       </li>
       <li class="user__login-dropdown--item">
-        <a href="#">
+        <a (click)="onLogout()">
           <mat-icon fontIcon="logout"></mat-icon>
           Logout</a
         >

@@ -42,20 +42,25 @@ $csgodouble-theme: mat.define-light-theme(
 
 $light-text-color: rgb(161, 160, 161);
 $dark-text-color: rgb(67, 66, 68);
+$empty-items: rgb(131, 130, 130);
+$items-bgc: rgb(56, 56, 56);
 $light-gray-bgc: rgb(246, 245, 246);
 $border-light-gray: rgb(235, 235, 235);
 $active-gray: rgb(180, 180, 180);
 $tomato-red: rgb(209, 71, 68);
-$green: rgb(85, 171, 86);
+$green: rgb(94, 184, 93);
 $dark: rgb(46, 45, 46);
+$light-green: rgb(225, 240, 223);
+$green-text: rgb(108, 130, 106);
+$light-blue-text: rgb(159, 191, 223);
 
 * {
   box-sizing: border-box;
   margin: 0;
   padding: 0;
-  // border: 1px dashed red;
 }
 body {
+  min-height: 100vh;
   font-family: "Inter";
   font-size: 18px;
 }

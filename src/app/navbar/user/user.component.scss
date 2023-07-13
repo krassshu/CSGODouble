@@ -1,9 +1,11 @@
+a {
+  cursor: pointer;
+}
 .user {
   display: flex;
   height: 100%;
   min-width: 180px;
   &__logout {
-    display: none;
     a {
       img {
         width: 100px;

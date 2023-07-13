@@ -1,46 +1,78 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnDestroy, OnInit } from '@angular/core';
+import { Subscription } from 'rxjs';
+import { RouletteHistoryService } from 'src/app/global-services/roulette-history.service';
+import { RouletteInitializationService } from 'src/app/global-services/roulette-initialization.service';
+import { RouletteService } from 'src/app/global-services/roulette.service';
 
 @Component({
   selector: 'app-rulette',
   templateUrl: './rulette.component.html',
   styleUrls: ['./rulette.component.scss'],
 })
-export class RuletteComponent implements OnInit {
+export class RuletteComponent implements OnInit, OnDestroy {
   progress: number = 100;
-  progressTime: number = 30000;
-  rollHistory: any[] = [1, 13, 12, 0, 11, 4, 8, 5, 6, 11];
-
-  ballsClass: string = '';
-  
-  seconds: number = Math.floor(this.progressTime / 1000);
-  milliseconds: number = this.progressTime % 1000;
-
-  roulettePosition: number = 75;
-  currentNumber: number = 11;
-
-  numberRanges: { [key: string]: number } = {
-    '11': 75,
-    '5': 167,
-    '10': 259,
-    '6': 351,
-    '9': 443,
-    '7': 535,
-    '8': 629,
-    '1': 719,
-    '14': 811,
-    '2': 903,
-    '13': 994,
-    '3': 1087,
-    '12': 1177,
-    '4': 1270,
-    '0': 1362,
-  };
-  
-  rolling: boolean = false;
+  seconds: number = 0;
+  milliseconds: number = 0;
+  roulettePosition: number = 0;
   spinAnimation: boolean = true;
+  rollHistory: any[] = [];
+
+  private subscription: Subscription = new Subscription();
+
+  constructor(
+    private rouletteService: RouletteService,
+    private rouletteHistoryService: RouletteHistoryService,
+    private rouletteInitializationService: RouletteInitializationService
+  ) {}
 
   ngOnInit(): void {
-    this.roundsSimulation();
+    const isInitialized = this.rouletteInitializationService.getIsInitialized();
+
+    this.subscription.add(
+      this.rouletteService.roulettePosition$.subscribe((roulettePosition) => {
+        this.roulettePosition = roulettePosition;
+      })
+    );
+    this.subscription.add(
+      this.rouletteService.progress$.subscribe((progress) => {
+        this.progress = progress;
+      })
+    );
+    this.subscription.add(
+      this.rouletteService.seconds$.subscribe((seconds) => {
+        this.seconds = seconds;
+      })
+    );
+
+    this.subscription.add(
+      this.rouletteService.milliseconds$.subscribe((milliseconds) => {
+        this.milliseconds = milliseconds;
+      })
+    );
+    this.subscription.add(
+      this.rouletteService.spinAnimation$.subscribe((spinAnimation) => {
+        this.spinAnimation = spinAnimation;
+      })
+    );
+
+    this.subscription.add(
+      this.rouletteService.rollHistory$.subscribe((currentNumber) => {
+        if (currentNumber !== -1) {
+          this.rollHistory.push(currentNumber);
+        }
+      })
+    );
+    this.rollHistory = this.rouletteHistoryService.rollHistory;
+    if (!isInitialized) {
+      this.rouletteService.roundsSimulation();
+      this.rouletteService.spinRoulette();
+
+      this.rouletteInitializationService.setIsInitialized(true);
+    }
+  }
+
+  ngOnDestroy(): void {
+    this.subscription.unsubscribe();
   }
 
   getBallsClass(number: number): string {
@@ -50,53 +82,6 @@ export class RuletteComponent implements OnInit {
       return 'red';
     } else {
       return 'dark';
-    }
-  }
-
-  roundsSimulation() {
-    this.rolling = false;
-    this.spinAnimation = true;
-    const decreaseAmount = 100 / (this.progressTime / 10);
-
-    const intervalId = setInterval(() => {
-      this.progress -= decreaseAmount;
-      const remainingTime = Math.max(
-        this.progressTime * (this.progress / 100),
-        0
-      );
-      this.seconds = Math.floor(remainingTime / 1000);
-      this.milliseconds = remainingTime % 1000;
-
-      if (this.progress <= 0) {
-        this.progress = 0;
-        this.seconds = 0;
-        this.milliseconds = 0;
-
-        this.spinRoulette();
-        clearInterval(intervalId);
-      }
-    }, 10);
-  }
-
-  spinRoulette() {
-    if (this.rolling === false) {
-      this.rolling = true;
-
-      const number = Math.floor(Math.random() * 14);
-      const scrollAmount =
-        2760 * 4 + this.numberRanges[number] + this.currentNumber;
-      this.roulettePosition = scrollAmount - 11;
-      console.log('Number: ' + number);
-      setTimeout(() => {
-        this.spinAnimation = false;
-        this.roulettePosition = this.roulettePosition - 2760 * 4;
-        this.rollHistory.push(number);
-        setTimeout(() => {
-          this.progress = 100;
-          this.progressTime = 30000;
-          this.roundsSimulation();
-        }, 1000);
-      }, 6000);
     }
   }
 }

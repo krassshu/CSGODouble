@@ -1,0 +1,59 @@
+@use "../../styles.scss" as c;
+
+.main {
+  display: flex;
+  justify-content: center;
+  width: 100%;
+  .container {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+    width: 70%;
+    .information-panel {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      width: 100%;
+      padding: 16px;
+      border-radius: 4px;
+      font-size: 16px;
+      font-weight: 600;
+      span {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+      }
+    }
+  }
+  .deposit {
+    display: flex;
+    justify-content: space-between;
+  }
+}
+.instruction {
+  margin-top: 16px;
+  background-color: #deedf9;
+  color: #5e8398;
+}
+.loading {
+  background-color: #fff8e7;
+  color: #9f8b6f;
+
+  span {
+    position: relative;
+    &::after {
+      position: absolute;
+      top: -3px;
+      right: -35px;
+      content: url("../../assets/img/svg/loading_circle.svg");
+    }
+  }
+}
+.loaded {
+  background-color: c.$green;
+  color: #fff;
+}
+
+app-deposit-items {
+  width: 100%;
+}

@@ -1,0 +1,95 @@
+@use "../../styles.scss" as c;
+
+.main {
+  display: flex;
+  justify-content: center;
+  width: 100%;
+  .container {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+    width: 70%;
+    .information-panel {
+      display: flex;
+      align-items: center;
+      width: 100%;
+      padding: 16px;
+      margin-top: 16px;
+      background-color: c.$light-green;
+      color: c.$green-text;
+      border-radius: 4px;
+      font-size: 16px;
+      font-weight: 600;
+      span {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+      }
+      a {
+        color: c.$light-blue-text;
+        margin-left: 4px;
+        cursor: pointer;
+      }
+    }
+    .affiliates {
+      border-collapse: collapse;
+      tbody {
+        width: 100%;
+      }
+      tr {
+        color: c.$dark-text-color;
+        td {
+          padding: 8px;
+          border: 1px solid c.$border-light-gray;
+          font-size: 14px;
+          &:first-child {
+            width: 35%;
+          }
+          div {
+            display: flex;
+            align-items: center;
+            span {
+              margin-right: 4px;
+            }
+            span,
+            mat-icon {
+              color: #9d6757;
+            }
+          }
+        }
+      }
+    }
+    .collect-btn {
+      height: 40px;
+      margin-bottom: 16px;
+      background-color: c.$green;
+      color: #fff;
+      font-weight: 600;
+      border: none;
+      border-radius: 4px;
+      cursor: pointer;
+    }
+    .affiliates-data {
+      margin-bottom: 16px;
+      border-collapse: collapse;
+      tr th {
+        width: 20%;
+        padding: 8px;
+        border: 1px solid c.$border-light-gray;
+        text-align: left;
+        font-size: 16px;
+      }
+
+      tbody {
+        width: 100%;
+        tr td {
+          padding: 8px;
+          background-color: c.$light-gray-bgc;
+          border: 1px solid c.$border-light-gray;
+          text-align: center;
+          font-size: 16px;
+        }
+      }
+    }
+  }
+}

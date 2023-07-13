@@ -19,6 +19,18 @@ import { RoundsComponent } from './home/main-content/bets/rounds/rounds.componen
 
 import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 import { FooterComponent } from './footer/footer.component';
+import { FormsModule } from '@angular/forms';
+
+import { DepositComponent } from './deposit/deposit.component';
+import { InventoryComponent } from './deposit/inventory/inventory.component';
+import { DepositItemsComponent } from './deposit/deposit-items/deposit-items.component';
+import { WithdrawComponent } from './withdraw/withdraw.component';
+import { ProvablyFairComponent } from './provably-fair/provably-fair.component';
+import { AffiliatesComponent } from './affiliates/affiliates.component';
+import { SupportComponent } from './support/support.component';
+import { HttpClientModule } from '@angular/common/http';
+import { DetailsComponent } from './provably-fair/details/details.component';
+import { RouletteService } from './global-services/roulette.service';
 
 @NgModule({
   declarations: [
@@ -33,6 +45,14 @@ import { FooterComponent } from './footer/footer.component';
     ChatRoomComponent,
     RoundsComponent,
     FooterComponent,
+    DepositComponent,
+    InventoryComponent,
+    DepositItemsComponent,
+    WithdrawComponent,
+    ProvablyFairComponent,
+    AffiliatesComponent,
+    SupportComponent,
+    DetailsComponent,
   ],
   imports: [
     BrowserModule,
@@ -42,8 +62,10 @@ import { FooterComponent } from './footer/footer.component';
     MatSelectModule,
     MatProgressBarModule,
     MatProgressSpinnerModule,
+    FormsModule,
+    HttpClientModule,
   ],
-  providers: [],
+  providers: [RouletteService],
   bootstrap: [AppComponent],
 })
 export class AppModule {}

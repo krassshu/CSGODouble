@@ -1,0 +1,75 @@
+<main class="main">
+  <div class="container">
+    <section class="provably-fair">
+      <p>Provably Fair <mat-icon fontIcon="lock"></mat-icon></p>
+      <div class="provably-fair_description">
+        <p>
+          All rolls on CSGODouble are generated using a provably fair system.
+          This means the operators cannot manipulate the outcome of any roll.
+          Each rolls is generated in part using the results of the
+          <a href="https://nylottery.ny.gov/draw-game?game=take5"
+            >New York Lottery's Take 5</a
+          >
+          game. Players may replicate any past roll using the bellow code:
+        </p>
+        <div class="provably-fair_description-code">
+          $server_seed =
+          "3967d32fcb743c244c569a56d6de4dc27577d6277d6cf155bdcba6d05befcb34";<br />
+          $lotto = "0422262831";<br />
+          $round_id = "I"; <br />
+          $hash - hash("sha256", $server_seed. -".Slotto."-".Sround_id);<br />
+          $roll = hexdec(substr (Shash, 0,8)) % 15; <br />
+          echo "Round Sround_id - $roll";<br />
+        </div>
+        <p>
+          You can execute PHP code straight from your web browser with tools
+          like
+          <a href="#">PHP Tester</a>. Simply copy-paste the code into the window
+          and replace the server_seed, lotto, and round_id values for your own.
+          Execute the code to verify the roll.
+        </p>
+        <br />
+        <p>
+          For more information about provably fair visit our FAQ page or feel
+          free to contact us.
+        </p>
+      </div>
+    </section>
+    <section class="rolls">
+      <table class="rolls_table">
+        <thead>
+          <tr>
+            <th class="rolls_table-date">Date</th>
+            <th class="rolls_table-seed">Server Seed</th>
+            <th class="rolls_table-lottery">Lottery</th>
+            <th class="rolls_table-rolls">Rolls</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let data of rouletteHistory.reverse(); let i = index">
+            <td class="rolls_table-date">{{ data.date }}</td>
+            <td
+              class="rolls_table-seed done"
+              [ngClass]="{
+                done: data.rolls >= 329,
+                'in-use': data.rolls % 329
+              }"
+            >
+              <mat-icon
+                [fontIcon]="data.rolls % 329 ? 'lock' : 'check_circle'"
+              ></mat-icon>
+              {{ data.rolls % 329 ? "SERVER SEED IN USE" : data.serverSeed }}
+            </td>
+            <td class="rolls_table-lottery">{{ data.lottery }}</td>
+            <td class="rolls_table-rolls">
+              <a [routerLink]="['./' + data.lottery]">
+                {{ data.rolls - data.numbers.length }}-{{ data.rolls }}
+              </a>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </section>
+  </div>
+</main>
+<router-outlet></router-outlet>

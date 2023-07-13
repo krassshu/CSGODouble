@@ -1,27 +1,78 @@
 <div class="bets">
   <div class="bets__amount">
-    <p>Balance: {{ balance }} <mat-icon fontIcon="autorenew"></mat-icon></p>
+    <p>
+      Balance: {{ balance }}
+      <mat-icon fontIcon="autorenew" (click)="refreshBalance()"></mat-icon>
+    </p>
 
     <div class="your-bet">
       <ul>
         <li>
-          <button style="border-radius: 4px 0 0 4px" type="button">
+          <button
+            style="border-radius: 4px 0 0 4px"
+            type="button"
+            (click)="placeStatickBet(betValue, 0)"
+          >
             Clear
           </button>
         </li>
-        <li><button type="button">Last</button></li>
-        <li><button type="button">+1</button></li>
-        <li><button type="button">+10</button></li>
-        <li><button type="button">+100</button></li>
-        <li><button type="button">+1000</button></li>
-        <li><button type="button">1/2</button></li>
-        <li><button type="button">X2</button></li>
         <li>
-          <button style="border-radius: 0 4px 4px 0" type="button">MAX</button>
+          <button type="button" (click)="placeStatickBet(betValue, -1)">
+            Last
+          </button>
+        </li>
+        <li>
+          <button type="button" (click)="placeStatickBet(betValue, 1)">
+            +1
+          </button>
+        </li>
+        <li>
+          <button type="button" (click)="placeStatickBet(betValue, 10)">
+            +10
+          </button>
+        </li>
+        <li>
+          <button type="button" (click)="placeStatickBet(betValue, 100)">
+            +100
+          </button>
+        </li>
+        <li>
+          <button type="button" (click)="placeStatickBet(betValue, 1000)">
+            +1000
+          </button>
+        </li>
+        <li>
+          <button type="button" (click)="placeStatickBet(betValue, 0.5)">
+            1/2
+          </button>
+        </li>
+        <li>
+          <button type="button" (click)="placeStatickBet(betValue, 0.2)">
+            X2
+          </button>
+        </li>
+        <li>
+          <button
+            style="border-radius: 0 4px 4px 0"
+            type="button"
+            (click)="placeStatickBet(betValue, 9999)"
+          >
+            MAX
+          </button>
         </li>
       </ul>
-      <input type="text" placeholder="Bet amount..." />
+      <input
+        type="text"
+        placeholder="Bet amount..."
+        [(ngModel)]="betValue"
+        (keypress)="checkBetValue($event)"
+      />
     </div>
   </div>
-  <app-rounds></app-rounds>
+  <app-rounds
+    [betValue]="betValue"
+    (placedBet)="changeCurrentBalance($event)"
+    (winAmount)="updateBalance($event)"
+    (placedBetHistorry)="updatePlacedBetHistory($event)"
+  ></app-rounds>
 </div>

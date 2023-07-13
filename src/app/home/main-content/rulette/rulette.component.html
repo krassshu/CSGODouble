@@ -10,17 +10,21 @@
       }}...
     </span>
   </div>
-  <div
-    class="rolling__rulette"
-    [ngStyle]="{ 'background-position': '-' + roulettePosition + 'px 0' }"
-    [ngClass]="{ spin_animation: spinAnimation }"
-  ></div>
+  <div class="rolling__container">
+    <div
+      class="rolling__container-rulette"
+      [ngStyle]="{ 'background-position': '-' + roulettePosition + 'px 0' }"
+      [ngClass]="{ spin_animation: spinAnimation }"
+    ></div>
+  </div>
 
   <div class="rolling__jackpot">
     <ul class="rolling__jackpot-balls">
       <li
         class="rolling__jackpot-balls--ball"
-        *ngFor="let balls of rollHistory.slice(rollHistory.length - 10).reverse()"
+        *ngFor="
+          let balls of rollHistory.slice(rollHistory.length - 10).reverse()
+        "
         [ngClass]="getBallsClass(balls)"
       >
         <span>{{ balls }}</span>

@@ -1,0 +1,77 @@
+@use "../../styles.scss" as c;
+
+.main {
+  display: flex;
+  justify-content: center;
+  width: 100%;
+  .container {
+    display: flex;
+    flex-direction: column;
+    width: 70%;
+    margin: 16px 0;
+    .provably-fair {
+      border: 1px solid c.$border-light-gray;
+      border-radius: 4px;
+      a {
+        color: rgb(159, 205, 252);
+      }
+      p {
+        padding: 8px;
+        background-color: c.$light-gray-bgc;
+      }
+      &_description {
+        font-size: 16px;
+        padding: 16px;
+        &-code {
+          line-height: 26px;
+          margin: 8px 0;
+          padding: 8px;
+          background-color: c.$light-gray-bgc;
+          border: 1px solid c.$border-light-gray;
+          border-radius: 4px;
+        }
+        p {
+          padding: 0;
+          background-color: transparent;
+        }
+      }
+    }
+    .rolls {
+      margin-top: 16px;
+      font-size: 16px;
+      &_table {
+        width: 100%;
+        border-collapse: collapse;
+        thead tr th {
+          padding: 6px;
+          border: 1px solid c.$border-light-gray;
+        }
+        tbody tr {
+          color: c.$light-text-color;
+          &:nth-child(odd) {
+            background-color: c.$light-gray-bgc;
+          }
+          td {
+            padding: 6px;
+            border: 1px solid c.$border-light-gray;
+            font-size: 14px;
+            mat-icon {
+              margin-right: 4px;
+              font-size: 22px;
+            }
+          }
+        }
+      }
+    }
+  }
+}
+.done {
+  display: flex;
+  align-items: center;
+  color: c.$green;
+}
+.in-use {
+  display: flex;
+  align-items: center;
+  color: c.$tomato-red;
+}

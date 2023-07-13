@@ -1,10 +1,17 @@
 <div class="rounds">
   <div class="round rounds__red">
     <div class="round__button">
-      <button type="button">1 to 7</button>
+      <button
+        type="button"
+        (click)="placeBet('red')"
+        [disabled]="rolling === true"
+        [ngStyle]="{ cursor: rolling ? 'not-allowed' : 'pointer' }"
+      >
+        1 to 7
+      </button>
     </div>
     <div class="round__details">
-      <span>0</span>
+      <span>{{ betArray["red"] }}</span>
     </div>
     <div class="round__list">
       <div class="round__list-total">
@@ -13,12 +20,12 @@
       </div>
       <div class="round__list-players">
         <ul>
-          <li *ngFor="let player of players">
-            <a href="#" class="player">
+          <li *ngIf="betArray['red'] > 0">
+            <a href="{{ player.steam }}" class="player">
               <img src="{{ player.avatar }}" alt="" />
               <i>{{ player.user }}</i>
             </a>
-            <span>{{ player.amount }}</span>
+            <span>{{ betArray["red"] }}</span>
           </li>
         </ul>
       </div>
@@ -26,10 +33,17 @@
   </div>
   <div class="round rounds__green">
     <div class="round__button">
-      <button type="button">0</button>
+      <button
+        type="button"
+        (click)="placeBet('green')"
+        [disabled]="rolling === true"
+        [ngStyle]="{ cursor: rolling ? 'not-allowed' : 'pointer' }"
+      >
+        0
+      </button>
     </div>
     <div class="round__details">
-      <span>0</span>
+      <span>{{ betArray["green"] }}</span>
     </div>
     <div class="round__list">
       <div class="round__list-total">
@@ -38,12 +52,12 @@
       </div>
       <div class="round__list-players">
         <ul>
-          <li>
-            <a href="#" class="player">
-              <img src="" alt="" />
-              <i>Krashu</i>
+          <li *ngIf="betArray['green'] > 0">
+            <a href="{{ player.steam }}" class="player">
+              <img src="{{ player.avatar }}" alt="" />
+              <i>{{ player.user }}</i>
             </a>
-            <span>1000</span>
+            <span>{{ betArray["green"] }}</span>
           </li>
         </ul>
       </div>
@@ -51,10 +65,17 @@
   </div>
   <div class="round rounds__black">
     <div class="round__button">
-      <button type="button">8 to 14</button>
+      <button
+        type="button"
+        (click)="placeBet('black')"
+        [disabled]="rolling === true"
+        [ngStyle]="{ cursor: rolling ? 'not-allowed' : 'pointer' }"
+      >
+        8 to 14
+      </button>
     </div>
     <div class="round__details">
-      <span>0</span>
+      <span>{{ betArray["black"] }}</span>
     </div>
     <div class="round__list">
       <div class="round__list-total">
@@ -63,12 +84,12 @@
       </div>
       <div class="round__list-players">
         <ul>
-          <li>
-            <a href="#" class="player">
-              <img src="" alt="" />
-              <i>Krashu</i>
+          <li *ngIf="betArray['black'] > 0">
+            <a href="{{ player.steam }}" class="player">
+              <img src="{{ player.avatar }}" alt="" />
+              <i>{{ player.user }}</i>
             </a>
-            <span>1000</span>
+            <span>{{ betArray["black"] }}</span>
           </li>
         </ul>
       </div>

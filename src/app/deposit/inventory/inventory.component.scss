@@ -1,0 +1,72 @@
+@use "../../../styles.scss" as c;
+
+.inventory {
+  width: fit-content;
+  border: 1px solid c.$border-light-gray;
+  border-radius: 4px;
+  &_header {
+    background-color: c.$light-gray-bgc;
+    padding: 4px 10px;
+    font-weight: 600;
+    font-size: 16px;
+  }
+  &_items {
+    padding: 8px 12px;
+
+    &-search {
+      display: flex;
+      justify-content: space-between;
+      input {
+        width: 80%;
+      }
+      select {
+        width: 19%;
+        color: c.$light-text-color;
+      }
+      .fields {
+        padding: 8px;
+        border: 1px solid c.$border-light-gray;
+        border-radius: 4px;
+      }
+    }
+
+    &-con {
+      display: grid;
+      grid-template-columns: repeat(6, 1fr);
+      gap: 4px;
+      margin-top: 8px;
+
+      &--item {
+        position: relative;
+        display: flex;
+        align-items: center;
+        flex-direction: column;
+        width: 120px;
+        height: 120px;
+        background-color: c.$items-bgc;
+        color: #fff;
+        font-size: 12px;
+        cursor: pointer;
+        img {
+          width: 60px;
+        }
+        p {
+          text-align: center;
+          &:nth-child(1) {
+            align-self: flex-end;
+            background-color: c.$green;
+            padding: 4px;
+            border-radius: 0 0 0 8px;
+          }
+        }
+      }
+    }
+  }
+}
+.item-disabled {
+  position: absolute;
+  width: 120px;
+  height: 120px;
+  background-color: c.$empty-items;
+  z-index: 999;
+}

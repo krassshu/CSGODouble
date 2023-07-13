@@ -1,0 +1,62 @@
+<main class="main">
+  <div class="container">
+    <section class="details">
+      <table class="details_table">
+        <thead>
+          <tr>
+            <th class="details_table-date">Time</th>
+            <th class="details_table-seed">Rounds</th>
+            <th class="details_table-number">0</th>
+            <th class="details_table-number">1</th>
+            <th class="details_table-number">2</th>
+            <th class="details_table-number">3</th>
+            <th class="details_table-number">4</th>
+            <th class="details_table-number">5</th>
+            <th class="details_table-number">6</th>
+            <th class="details_table-number">7</th>
+            <th class="details_table-number">8</th>
+            <th class="details_table-number">9</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let data of convertedNumbers; let i = index">
+            <td class="date">{{ getCurrentTime(i, data) }}</td>
+            <td class="round">
+              {{ rounds - i * 10 + "_" }}
+            </td>
+            <td class="numbers" [ngClass]="getBallsClass(data[0])">
+              {{ data[0] }}
+            </td>
+            <td class="numbers" [ngClass]="getBallsClass(data[1])">
+              {{ data[1] }}
+            </td>
+            <td class="numbers" [ngClass]="getBallsClass(data[2])">
+              {{ data[2] }}
+            </td>
+            <td class="numbers" [ngClass]="getBallsClass(data[3])">
+              {{ data[3] }}
+            </td>
+            <td class="numbers" [ngClass]="getBallsClass(data[4])">
+              {{ data[4] }}
+            </td>
+            <td class="numbers" [ngClass]="getBallsClass(data[5])">
+              {{ data[5] }}
+            </td>
+            <td class="numbers" [ngClass]="getBallsClass(data[6])">
+              {{ data[6] }}
+            </td>
+            <td class="numbers" [ngClass]="getBallsClass(data[7])">
+              {{ data[7] }}
+            </td>
+            <td class="numbers" [ngClass]="getBallsClass(data[8])">
+              {{ data[8] }}
+            </td>
+            <td class="numbers" [ngClass]="getBallsClass(data[9])">
+              {{ data[9] }}
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </section>
+  </div>
+</main>

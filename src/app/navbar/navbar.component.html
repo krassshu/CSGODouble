@@ -5,13 +5,51 @@
         >CSGODouble.com</a
       >
       <a class="nav-con__bookmarks-pages" [routerLink]="['/home']">Home</a>
-      <a class="nav-con__bookmarks-pages" href="#">Deposit</a>
-      <a class="nav-con__bookmarks-pages" href="#">Withdraw</a>
-      <a class="nav-con__bookmarks-pages" href="#">Provably Fair</a>
-      <a class="nav-con__bookmarks-pages" href="#">Affilates</a>
-      <a class="nav-con__bookmarks-pages" href="#">Free Coins</a>
-      <a class="nav-con__bookmarks-pages" href="#">Support</a>
+      <a class="nav-con__bookmarks-pages" [routerLink]="['/deposit']"
+        >Deposit</a
+      >
+      <a class="nav-con__bookmarks-pages" [routerLink]="['/withdraw']"
+        >Withdraw</a
+      >
+      <a class="nav-con__bookmarks-pages" [routerLink]="['/provably-fair']"
+        >Provably Fair</a
+      >
+      <a class="nav-con__bookmarks-pages" [routerLink]="['/affiliates']"
+        >Affiliates</a
+      >
+      <a class="nav-con__bookmarks-pages" (click)="onActivePopup()"
+        ><mat-icon fontIcon="star"></mat-icon> Free Coins
+        <mat-icon fontIcon="star"></mat-icon
+      ></a>
+      <a class="nav-con__bookmarks-pages" [routerLink]="['/support']"
+        >Support</a
+      >
     </div>
     <app-user></app-user>
   </div>
 </nav>
+<div
+  class="popup"
+  [ngStyle]="{
+    opacity: activePopup ? 1 : 0,
+    display: activePopup ? 'block' : 'none'
+  }"
+>
+  <div
+    class="popup_content"
+    [ngClass]="{ 'show-popup': activePopup, 'hide-popup': !delayHide }"
+  >
+    <mat-icon
+      class="popup_content-close"
+      fontIcon="close"
+      (click)="onHidePopup()"
+    ></mat-icon>
+    <span>Redeem Promo Code</span>
+    <label for="promo-code">Promo Code</label>
+    <input type="text" id="promo-code" />
+    <div class="popup_content-btns">
+      <button class="close" (click)="onHidePopup()">Close</button>
+      <button class="redeem">Redeem</button>
+    </div>
+  </div>
+</div>

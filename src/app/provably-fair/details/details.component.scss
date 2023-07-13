@@ -1,0 +1,54 @@
+@use "../../../styles.scss" as c;
+
+.main {
+  display: flex;
+  justify-content: center;
+  width: 100%;
+  .container {
+    display: flex;
+    flex-direction: column;
+    width: 70%;
+    margin: 16px 0;
+    .details {
+      margin-top: 16px;
+      font-size: 16px;
+      &_table {
+        width: 100%;
+        border-collapse: collapse;
+        thead tr th {
+          padding: 6px;
+          border: 1px solid c.$border-light-gray;
+        }
+        tbody tr {
+          color: c.$light-text-color;
+          td {
+            padding: 6px;
+            border: 1px solid c.$border-light-gray;
+            font-size: 14px;
+          }
+          .numbers {
+            height: 40px;
+            text-align: center;
+            color: #fff;
+          }
+          .round {
+            width: 140px;
+          }
+          .date {
+            width: 160px;
+          }
+        }
+      }
+    }
+  }
+}
+
+.green {
+  background-color: c.$green;
+}
+.red {
+  background-color: c.$tomato-red;
+}
+.dark {
+  background-color: c.$dark;
+}

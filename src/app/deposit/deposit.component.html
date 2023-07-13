@@ -1,0 +1,28 @@
+<main class="main">
+  <div class="container">
+    <div class="information-panel instruction">
+      <mat-icon fontIcon="error"></mat-icon
+      ><span
+        >After accepting the trade offer you MUST click the green "Get Coins"
+        button to recive your coins.</span
+      >
+    </div>
+    <div
+      class="information-panel"
+      [ngClass]="{ loaded: loading === false, loading: loading === true }"
+    >
+      <span>
+        <mat-icon fontIcon="check" *ngIf="!loading"></mat-icon>
+        {{
+          loading
+            ? "Loading items - please wait..."
+            : "Loaded " + itemsAmount + " available items."
+        }}</span
+      >
+    </div>
+    <div class="deposit">
+      <app-inventory></app-inventory>
+      <app-deposit-items></app-deposit-items>
+    </div>
+  </div>
+</main>

@@ -1,6 +1,9 @@
 @use "../../../../styles.scss" as c;
 
 .rolling {
+  display: flex;
+  flex-direction: column;
+
   &__progress {
     position: relative;
     width: 100%;
@@ -20,26 +23,34 @@
       font-weight: 600;
     }
   }
-  &__rulette {
-    position: relative;
-    height: 92px;
-    margin-top: 18px;
-    background-image: url("../../../../assets/img/nums.png");
-    background-repeat: repeat;
-    background-position: 0px 0px;
-    background-size: cover;
-    overflow: hidden;
-    &:before {
-      width: 5px;
+  &__container {
+    display: flex;
+    height: fit-content;
+    justify-content: center;
+    width: 100%;
+    &-rulette {
+      position: relative;
+      width: 100%;
+      max-width: 1415px;
       height: 92px;
-      background-color: rgb(255, 234, 0);
-      position: absolute;
-      left: 0;
-      right: 0;
-      top: 0;
-      margin: auto;
-      content: "";
-      background-color: rgb(255, 234, 0);
+      margin-top: 18px;
+      background-image: url("../../../../assets/img/nums.png");
+      background-repeat: repeat;
+      background-position: 0px 0px;
+      background-size: cover;
+      overflow: hidden;
+      &:before {
+        width: 5px;
+        height: 92px;
+        background-color: rgb(255, 234, 0);
+        position: absolute;
+        left: 0;
+        right: 0;
+        top: 0;
+        margin: auto;
+        content: "";
+        background-color: rgb(255, 234, 0);
+      }
     }
   }
   &__jackpot {
@@ -79,13 +90,13 @@
   background-color: c.$dark;
 }
 .spin_animation {
-  -webkit-transition: all 6000ms cubic-bezier(0.34, 0.87, 0.52, 1); 
-  -moz-transition: all 6000ms cubic-bezier(0.34, 0.87, 0.52, 1); 
-  -o-transition: all 6000ms cubic-bezier(0.34, 0.87, 0.52, 1); 
+  -webkit-transition: all 6000ms cubic-bezier(0.34, 0.87, 0.52, 1);
+  -moz-transition: all 6000ms cubic-bezier(0.34, 0.87, 0.52, 1);
+  -o-transition: all 6000ms cubic-bezier(0.34, 0.87, 0.52, 1);
   transition: all 6000ms cubic-bezier(0.34, 0.87, 0.52, 1);
 
-  -webkit-transition-timing-function: cubic-bezier(0.34, 0.87, 0.52, 1); 
-  -moz-transition-timing-function: cubic-bezier(0.34, 0.87, 0.52, 1); 
-  -o-transition-timing-function: cubic-bezier(0.34, 0.87, 0.52, 1); 
+  -webkit-transition-timing-function: cubic-bezier(0.34, 0.87, 0.52, 1);
+  -moz-transition-timing-function: cubic-bezier(0.34, 0.87, 0.52, 1);
+  -o-transition-timing-function: cubic-bezier(0.34, 0.87, 0.52, 1);
   transition-timing-function: cubic-bezier(0.34, 0.87, 0.52, 1);
 }
