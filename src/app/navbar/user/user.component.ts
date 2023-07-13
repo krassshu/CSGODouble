@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { PlayerService } from 'src/app/player.service';
+import { PlayerService } from 'src/app/global-services/player.service';
 @Component({
   selector: 'app-user',
   templateUrl: './user.component.html',

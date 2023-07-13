@@ -4,6 +4,9 @@ import { Injectable } from '@angular/core';
   providedIn: 'root',
 })
 export class PlayerService {
+  isLogin: boolean = false;
+
+  
   player: any = {
     user: 'krashu',
     avatar: '../../../../../assets/img/csdouble_icon.png',

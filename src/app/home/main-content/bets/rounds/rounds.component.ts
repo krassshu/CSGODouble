@@ -6,7 +6,7 @@ import {
   OnInit,
   Output,
 } from '@angular/core';
-import { PlayerService } from 'src/app/player.service';
+import { PlayerService } from 'src/app/global-services/player.service';
 import { Subscription } from 'rxjs';
 import { RouletteService } from 'src/app/global-services/roulette.service';
 

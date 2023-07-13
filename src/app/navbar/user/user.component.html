@@ -15,19 +15,13 @@
     </div>
     <ul class="user__login-dropdown" [ngClass]="{ active: isDropdownActive }">
       <li class="user__login-dropdown--item">
-        <a [routerLink]="['/deposit']">
+        <a [routerLink]="['/deposit']" (click)="toggleDropdown()">
           <mat-icon fontIcon="account_balance_wallet"></mat-icon>
           Add balance</a
         >
       </li>
       <li class="user__login-dropdown--item">
-        <a href="#">
-          <mat-icon fontIcon="settings"></mat-icon>
-          Settings</a
-        >
-      </li>
-      <li class="user__login-dropdown--item">
-        <a (click)="onLogout()">
+        <a (click)="onLogout()" (click)="toggleDropdown()">
           <mat-icon fontIcon="logout"></mat-icon>
           Logout</a
         >

@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { BehaviorSubject, Observable } from 'rxjs';
-import { PlayerService } from '../player.service';
+import { PlayerService } from './player.service';
 
 @Injectable({
   providedIn: 'root',
@@ -45,6 +45,7 @@ export class RouletteService {
   private progressTime: number = 45000;
   private rolling: boolean = false;
   private currentNumber: number = 11;
+  private roulettePosition: number = 75;
   private numberRanges: { [key: string]: number } = {
     '11': 75,
     '5': 167,
@@ -128,5 +129,9 @@ export class RouletteService {
     const currentBalance = this.balanceSubject.getValue();
     const newBalance = currentBalance + amount;
     this.balanceSubject.next(newBalance);
+  }
+  updateRoulettePosition(roulettePositionChange: number): void {
+    this.roulettePosition += roulettePositionChange;
+    this.roulettePositionSubject.next(this.roulettePosition);
   }
 }
