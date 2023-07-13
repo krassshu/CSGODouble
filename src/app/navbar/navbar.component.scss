@@ -54,6 +54,9 @@
     background-color: c.$light-gray-bgc;
     color: c.$dark-text-color;
     border-radius: 4px;
+    -webkit-box-shadow: 0px 0px 20px 4px rgba(0, 0, 0, 1);
+    -moz-box-shadow: 0px 0px 20px 4px rgba(0, 0, 0, 1);
+    box-shadow: 0px 0px 20px 4px rgba(0, 0, 0, 1);
     &-close {
       position: absolute;
       top: 5px;
@@ -117,12 +120,12 @@
     top: -999px;
   }
   to {
-    top: 24px;
+    top: 34px;
   }
 }
 @keyframes hide-popup {
   from {
-    top: 24px;
+    top: 34px;
   }
   to {
     top: -999px;

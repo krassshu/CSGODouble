@@ -71,8 +71,6 @@
   </div>
   <app-rounds
     [betValue]="betValue"
-    (placedBet)="changeCurrentBalance($event)"
     (winAmount)="updateBalance($event)"
-    (placedBetHistorry)="updatePlacedBetHistory($event)"
   ></app-rounds>
 </div>

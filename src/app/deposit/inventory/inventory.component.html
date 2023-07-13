@@ -1,6 +1,6 @@
 <div class="inventory">
   <div class="inventory_header">
-    <span>Inventory: {{ inventoryItems.length }} items</span>
+    <span>Inventory: {{ isLogin ? inventoryItems.length : "0" }} items</span>
   </div>
   <div class="inventory_items">
     <div class="inventory_items-search">
@@ -9,25 +9,26 @@
         <option value="default">Default</option>
       </select>
     </div>
-    <div class="inventory_items-con">
-      <div class="inventory_items-con">
+    <div *ngIf="isLogin" class="inventory_items-con">
+      <div
+        class="inventory_items-con--item"
+        *ngFor="let item of inventoryItems; let i = index"
+        (click)="selectItem(item, i)"
+        [attr.index]="i"
+      >
+        <p class="value">{{ item.price * 10 }}</p>
+        <img
+          [src]="item.itemImg"
+          [alt]="item.name + ' (' + item.wearWell + ')'"
+        />
+        <p class="items-name">{{ item.name }} ({{ item.wearWell }})</p>
         <div
-          class="inventory_items-con--item"
-          *ngFor="let item of inventoryItems; let i = index"
-          (click)="selectItem(item, i)"
-          [attr.index]="i"
-        >
-          <p class="value">{{ item.price * 10 }}</p>
-          <img
-            [src]="item.itemImg"
-            [alt]="item.name + ' (' + item.wearWell + ')'"
-          />
-          <p class="items-name">{{ item.name }} ({{ item.wearWell }})</p>
-          <div
-            [ngClass]="{ 'item-disabled': selectedItemIndex.includes(i) }"
-          ></div>
-        </div>
+          [ngClass]="{ 'item-disabled': selectedItemIndex.includes(i) }"
+        ></div>
       </div>
+    </div>
+    <div *ngIf="!isLogin" class="inventory_items-empty">
+      <span>You need to log in if you want to see your inventory</span>
     </div>
   </div>
 </div>

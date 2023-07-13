@@ -124,6 +124,7 @@ export class RouletteService {
   updateCurrentNumber(number: number) {
     this.currentNumber = number;
     this.currentNumberSubject.next(number);
+    console.log(number);
   }
   addBalance(amount: number): void {
     const currentBalance = this.balanceSubject.getValue();
@@ -133,5 +134,8 @@ export class RouletteService {
   updateRoulettePosition(roulettePositionChange: number): void {
     this.roulettePosition += roulettePositionChange;
     this.roulettePositionSubject.next(this.roulettePosition);
+  }
+  public updateBalance(newBalance: number): void {
+    this.balanceSubject.next(newBalance);
   }
 }

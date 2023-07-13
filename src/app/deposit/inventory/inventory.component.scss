@@ -4,6 +4,7 @@
   width: fit-content;
   border: 1px solid c.$border-light-gray;
   border-radius: 4px;
+  margin-bottom: 16px;
   &_header {
     background-color: c.$light-gray-bgc;
     padding: 4px 10px;
@@ -60,6 +61,16 @@
           }
         }
       }
+    }
+    &-empty {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      width: 790px;
+      height: 300px;
+      margin-top: 16px;
+      padding: 16px 0;
+      background-color: c.$light-gray-bgc;
     }
   }
 }

@@ -17,9 +17,7 @@ import { RouletteService } from 'src/app/global-services/roulette.service';
 })
 export class RoundsComponent implements OnInit, OnDestroy {
   @Input() betValue: number | undefined;
-  @Output() placedBet = new EventEmitter<number>();
   @Output() winAmount = new EventEmitter<number>();
-  @Output() placedBetHistorry = new EventEmitter<number>();
 
   player: any;
   betColor?: string;
@@ -35,6 +33,8 @@ export class RoundsComponent implements OnInit, OnDestroy {
   private subscription: Subscription = new Subscription();
   rollingSubscription!: Subscription;
   currentNumberSubscription!: Subscription;
+  isLogin: boolean = false;
+  balance: number = 0;
 
   constructor(
     private playerService: PlayerService,
@@ -55,22 +55,42 @@ export class RoundsComponent implements OnInit, OnDestroy {
         this.currentNumber = currentNumber;
       })
     );
+    this.subscription.add(
+      this.playerService.isLogin$.subscribe((isLogin) => {
+        this.isLogin = isLogin;
+        if (isLogin) {
+          this.subscription.add(
+            this.rouletteService.balance$.subscribe((balance) => {
+              this.balance = balance;
+            })
+          );
+        }
+      })
+    );
 
     this.player = this.playerService.player;
   }
 
   placeBet(color: string): string {
-    this.placedBetValue = this.betValue !== undefined ? +this.betValue : 0;
+    if (this.balance !== 0) {
+      this.placedBetValue = this.betValue !== undefined ? +this.betValue : 0;
 
-    this.betArray[color] += this.placedBetValue;
+      this.betArray[color] += this.placedBetValue;
 
-    this.placedBetHistorry.emit(this.placedBetValue);
+      console.log(
+        `Your bet - red: ${this.betArray['red']}, green: ${this.betArray['green']}, black: ${this.betArray['black']}`
+      );
 
-    console.log(
-      `Your bet - red: ${this.betArray['red']}, green: ${this.betArray['green']}, black: ${this.betArray['black']}`
-    );
-    this.placedBet.emit(this.placedBetValue);
-    return (this.betColor = color);
+      this.betColor = color;
+
+      const newBalance = this.balance - this.placedBetValue;
+
+      this.rouletteService.updateBalance(newBalance);
+
+      return this.betColor;
+    }
+
+    return '';
   }
 
   resetBetArray() {

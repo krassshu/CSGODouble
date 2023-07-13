@@ -3,6 +3,7 @@ import { InventoryItemsService } from '../service/inventory-items.service';
 import { SelectedItemsService } from '../service/selected-items.service';
 import { Subscription } from 'rxjs';
 import { Item } from '../service/item.interface';
+import { PlayerService } from 'src/app/global-services/player.service';
 
 @Component({
   selector: 'app-inventory',
@@ -10,18 +11,27 @@ import { Item } from '../service/item.interface';
   styleUrls: ['./inventory.component.scss'],
 })
 export class InventoryComponent implements OnInit, OnDestroy {
-  inventoryItems: Item[] = this.inventoryItemsService.items;
+  inventoryItems: Item[] = [];
   selectedItem: Item[] = [];
   selectedItemIndex: any[] = [];
-  selectedItemsSubscription!: Subscription;
   removeItemsAfterBalance: boolean = false;
+  isLogin: boolean = false;
+
+  private selectedItemsSubscription: Subscription = new Subscription();
 
   constructor(
     private inventoryItemsService: InventoryItemsService,
-    private selectedItemsService: SelectedItemsService
+    private selectedItemsService: SelectedItemsService,
+    private playerService: PlayerService
   ) {}
 
   ngOnInit(): void {
+    this.selectedItemsSubscription = this.playerService.isLogin$.subscribe(
+      (isLogin) => {
+        this.isLogin = isLogin;
+      }
+    );
+    this.inventoryItems = this.inventoryItemsService.items;
     this.selectedItemsSubscription = this.selectedItemsService
       .getSelectedItemsSubject()
       .subscribe((selectedItems) => {

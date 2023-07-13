@@ -8,6 +8,7 @@
       >
     </div>
     <div
+      *ngIf="isLogin"
       class="information-panel"
       [ngClass]="{ loaded: loading === false, loading: loading === true }"
     >
