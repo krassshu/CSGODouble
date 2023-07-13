@@ -1,3 +1,20 @@
 <div class="chat-room">
-    <p>kdjhaisdhia</p>
+  <ul *ngIf="isLogin">
+    <li>
+      <i>{{ token }}</i>
+    </li>
+    <li>
+      <i>{{ conecting }}</i>
+    </li>
+    <li>
+      <i>{{ conected }}</i>
+    </li>
+  </ul>
+  <ul *ngIf="show" class="chat-info">
+    <li>## Min bet: 1 coin/s</li>
+    <li>## Max bet: 3,000,000 coins</li>
+    <li>## Max bets per roll: 3</li>
+    <li>## Roll countdown: 30 sec</li>
+    <li>## Chat: 2 sec cooldown (3000000+total bet)</li>
+  </ul>
 </div>
