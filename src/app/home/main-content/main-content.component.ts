@@ -1,4 +1,10 @@
-import { Component, ElementRef, OnDestroy, Renderer2 } from '@angular/core';
+import {
+  Component,
+  ElementRef,
+  OnDestroy,
+  OnInit,
+  Renderer2,
+} from '@angular/core';
 import { fromEvent, Subscription } from 'rxjs';
 import { RouletteService } from 'src/app/global-services/roulette.service';
 
@@ -7,9 +13,10 @@ import { RouletteService } from 'src/app/global-services/roulette.service';
   templateUrl: './main-content.component.html',
   styleUrls: ['./main-content.component.scss'],
 })
-export class MainContentComponent implements OnDestroy {
+export class MainContentComponent implements OnInit, OnDestroy {
   private resizeSubscription: Subscription;
   private lastComponentWidth: number;
+  private currentPosition: number = 75;
 
   constructor(
     private renderer: Renderer2,
@@ -22,8 +29,10 @@ export class MainContentComponent implements OnDestroy {
     });
   }
 
-  ngOnDestroy(): void {
-    this.resizeSubscription.unsubscribe();
+  ngOnInit(): void {
+    this.rouletteService.currentPosition$.subscribe((currentPosition) => {
+      this.currentPosition = currentPosition;
+    });
   }
 
   handleResize(): void {
@@ -31,16 +40,22 @@ export class MainContentComponent implements OnDestroy {
     const windowWidth = window.innerWidth;
 
     console.log('last width: ' + this.lastComponentWidth);
+    console.log('aktualna pozycja: ' + this.currentPosition);
     if (componentWidth <= 1442) {
-      const roulettePositionChange = 75 + (1443 - componentWidth) / 2;
+      const roulettePositionChange =
+        this.currentPosition + (1443 - componentWidth) / 2;
       console.log('sprawdzenie zmienionej pozycji ' + roulettePositionChange);
       this.rouletteService.updateRoulettePosition(roulettePositionChange);
     } else if (this.lastComponentWidth <= 1442) {
-      const roulettePositionChange = 75 + (1443 - componentWidth) / 2;
+      const roulettePositionChange =
+        this.currentPosition + (1443 - componentWidth) / 2;
       console.log('sprawdzenie zmienionej pozycji ' + roulettePositionChange);
       this.rouletteService.updateRoulettePosition(roulettePositionChange);
     }
 
     this.lastComponentWidth = componentWidth;
+  }
+  ngOnDestroy(): void {
+    this.resizeSubscription.unsubscribe();
   }
 }

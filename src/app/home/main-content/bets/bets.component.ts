@@ -30,6 +30,7 @@ export class BetsComponent implements OnInit, OnDestroy {
         this.subscription.add(
           this.rouletteService.balance$.subscribe((balance) => {
             this.balance = balance;
+            console.log(balance);
           })
         );
       }
@@ -69,9 +70,6 @@ export class BetsComponent implements OnInit, OnDestroy {
     } else {
       return console.log('Not enought coin');
     }
-  }
-  updateBalance(winAmount: number) {
-    this.balance = this.balance + winAmount;
   }
 
   checkBetValue(event: KeyboardEvent) {

@@ -63,6 +63,7 @@ export class RuletteComponent implements OnInit, OnDestroy {
       })
     );
     this.rollHistory = this.rouletteHistoryService.rollHistory;
+
     if (!isInitialized) {
       this.rouletteService.roundsSimulation();
       this.rouletteService.spinRoulette();

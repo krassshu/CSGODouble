@@ -1,11 +1,4 @@
-import {
-  Component,
-  EventEmitter,
-  Input,
-  OnDestroy,
-  OnInit,
-  Output,
-} from '@angular/core';
+import { Component, Input, OnDestroy, OnInit, Output } from '@angular/core';
 import { PlayerService } from 'src/app/global-services/player.service';
 import { Subscription } from 'rxjs';
 import { RouletteService } from 'src/app/global-services/roulette.service';
@@ -17,10 +10,9 @@ import { RouletteService } from 'src/app/global-services/roulette.service';
 })
 export class RoundsComponent implements OnInit, OnDestroy {
   @Input() betValue: number | undefined;
-  @Output() winAmount = new EventEmitter<number>();
 
   player: any;
-  betColor?: string;
+  betColor!: string;
   placedBetValue: number = 0;
   rolling: boolean = false;
   currentNumber!: number;
@@ -45,9 +37,6 @@ export class RoundsComponent implements OnInit, OnDestroy {
     this.subscription.add(
       this.rouletteService.rolling$.subscribe((rolling) => {
         this.rolling = rolling;
-        if (!rolling) {
-          this.resetBetArray();
-        }
       })
     );
     this.subscription.add(
@@ -65,6 +54,11 @@ export class RoundsComponent implements OnInit, OnDestroy {
             })
           );
         }
+      })
+    );
+    this.subscription.add(
+      this.rouletteService.betArray$.subscribe((betArray) => {
+        this.betArray = betArray;
       })
     );
 
@@ -86,32 +80,12 @@ export class RoundsComponent implements OnInit, OnDestroy {
       const newBalance = this.balance - this.placedBetValue;
 
       this.rouletteService.updateBalance(newBalance);
+      this.rouletteService.updateBetArray(this.betArray);
 
       return this.betColor;
     }
 
     return '';
-  }
-
-  resetBetArray() {
-    this.countWin();
-    this.betArray = {
-      red: 0,
-      green: 0,
-      black: 0,
-    };
-  }
-
-  countWin() {
-    let winBetAmount;
-    if (this.currentNumber >= 1 && this.currentNumber <= 7) {
-      winBetAmount = this.betArray['red'] * 2;
-    } else if (this.currentNumber >= 8 && this.currentNumber <= 14) {
-      winBetAmount = this.betArray['black'] * 2;
-    } else {
-      winBetAmount = this.betArray['green'] * 14;
-    }
-    this.winAmount.emit(winBetAmount);
   }
 
   ngOnDestroy() {
