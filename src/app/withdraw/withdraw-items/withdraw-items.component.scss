@@ -1,0 +1,67 @@
+@use "../../../styles.scss" as c;
+.deposits {
+  margin-left: 8px;
+  border: 1px solid c.$border-light-gray;
+  border-radius: 4px;
+  p {
+    padding: 4px 10px;
+    background-color: c.$light-gray-bgc;
+    font-size: 16px;
+    font-weight: 600;
+  }
+  &_deposit {
+    padding: 12px;
+
+    button {
+      width: 100%;
+      padding: 8px;
+      background-color: c.$tomato-red;
+      color: #fff;
+      font-weight: 600;
+      font-size: 18px;
+      text-align: center;
+      border: none;
+      border-radius: 4px;
+      cursor: pointer;
+      p {
+        background-color: c.$tomato-red;
+        font-weight: 400;
+      }
+    }
+    &-items {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 4px;
+      margin-top: 8px;
+      &--item {
+        display: flex;
+        align-items: center;
+        flex-direction: column;
+        width: 120px;
+        height: 120px;
+        background-color: c.$items-bgc;
+        color: #fff;
+        font-size: 14px;
+        cursor: pointer;
+        img {
+          width: 60px;
+        }
+        p {
+          background-color: transparent;
+          text-align: center;
+          font-size: 12px;
+          font-weight: 400;
+          &:nth-child(1) {
+            align-self: flex-end;
+            background-color: c.$green;
+            padding: 4px;
+            border-radius: 0 0 0 8px;
+          }
+        }
+      }
+    }
+  }
+}
+.empty {
+  background-color: c.$empty-items;
+}

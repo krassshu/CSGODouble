@@ -1,0 +1,28 @@
+<div class="deposits">
+  <p>Withdraws</p>
+
+  <div class="deposits_deposit">
+    <button (click)="addBalance(credits)">
+      Withdraws Items
+      <p>{{ credits }} credits | Available: {{ balance }}</p>
+    </button>
+    <div class="deposits_deposit-items">
+      <div
+        class="deposits_deposit-items--item"
+        *ngFor="let item of selectedItems; let i = index"
+        (click)="removeSelectedItem(item)"
+      >
+        <p class="value">{{ item.price * 10 }}</p>
+        <img
+          [src]="item.itemImg"
+          [alt]="item.name + ' (' + item.wearWell + ')'"
+        />
+        <p class="items-name">{{ item.name }} ({{ item.wearWell }})</p>
+      </div>
+      <div
+        class="deposits_deposit-items--item empty"
+        *ngFor="let i of getRange(nonSelectedItems)"
+      ></div>
+    </div>
+  </div>
+</div>

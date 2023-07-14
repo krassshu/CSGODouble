@@ -1,1 +1,28 @@
-<p>withdraw works!</p>
+<main class="main">
+  <div class="container">
+    <div class="information-panel instruction">
+      <mat-icon fontIcon="warning"></mat-icon
+      ><span
+        >Please do not attempt to modify the offer sent by our bots - doing so
+        will be counted as an accept.</span
+      >
+    </div>
+    <div
+      class="information-panel"
+      [ngClass]="{ loaded: loading === false, loading: loading === true }"
+    >
+      <span>
+        <mat-icon fontIcon="check" *ngIf="!loading"></mat-icon>
+        {{
+          loading
+            ? "Loading items - please wait..."
+            : "Loaded " + itemsAmount + " available items."
+        }}</span
+      >
+    </div>
+    <div class="deposit">
+      <app-bot-inventory></app-bot-inventory>
+      <app-withdraw-items></app-withdraw-items>
+    </div>
+  </div>
+</main>

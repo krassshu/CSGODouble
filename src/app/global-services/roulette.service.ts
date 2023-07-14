@@ -132,7 +132,8 @@ export class RouletteService {
     this.balanceSubject.next(newBalance);
   }
   updateRoulettePosition(roulettePositionChange: number): void {
-    this.roulettePosition += roulettePositionChange;
+    this.roulettePosition = roulettePositionChange;
+    console.log("Roulette service "+this.roulettePosition);
     this.roulettePositionSubject.next(this.roulettePosition);
   }
   public updateBalance(newBalance: number): void {

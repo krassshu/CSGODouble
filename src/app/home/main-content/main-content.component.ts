@@ -30,11 +30,15 @@ export class MainContentComponent implements OnDestroy {
     const componentWidth = this.elementRef.nativeElement.offsetWidth;
     const windowWidth = window.innerWidth;
 
-    if (componentWidth <= 1430) {
-      const roulettePositionChange = (1430 - componentWidth) / 2 - (1430 - this.lastComponentWidth) / 2;
+    console.log('last width: ' + this.lastComponentWidth);
+    if (componentWidth <= 1442) {
+      const roulettePositionChange = 75 + (1443 - componentWidth) / 2;
+      console.log('sprawdzenie zmienionej pozycji ' + roulettePositionChange);
       this.rouletteService.updateRoulettePosition(roulettePositionChange);
-    } else if (this.lastComponentWidth <= 1430) {
-      this.rouletteService.updateRoulettePosition(-30);
+    } else if (this.lastComponentWidth <= 1442) {
+      const roulettePositionChange = 75 + (1443 - componentWidth) / 2;
+      console.log('sprawdzenie zmienionej pozycji ' + roulettePositionChange);
+      this.rouletteService.updateRoulettePosition(roulettePositionChange);
     }
 
     this.lastComponentWidth = componentWidth;

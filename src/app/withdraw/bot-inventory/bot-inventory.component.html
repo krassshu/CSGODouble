@@ -1,0 +1,49 @@
+<div class="inventory">
+  <div class="inventory_header">
+    <span>Bank: {{ inventoryItems.length }} items</span>
+  </div>
+  <div class="inventory_items">
+    <div class="inventory_items-bots">
+      <button class="clicked">All</button>
+      <button>Bot 1</button>
+      <button>Bot 2</button>
+      <button>Bot 3</button>
+      <button>Bot 4</button>
+      <button>Bot 5</button>
+      <button>Bot 6</button>
+      <button>Bot 7</button>
+      <button>Bot 8</button>
+      <button>Bot 9</button>
+      <button>Bot 10</button>
+      <button>Bot 11</button>
+      <button>Bot 12</button>
+    </div>
+    <div class="inventory_items-search">
+      <input class="fields" type="text" placeholder="Search..." />
+      <select class="fields">
+        <option value="default">Default</option>
+      </select>
+    </div>
+    <div class="inventory_items-con">
+      <div
+        class="inventory_items-con--item"
+        *ngFor="let item of inventoryItems; let i = index"
+        (click)="selectItem(item, i)"
+        [attr.index]="i"
+      >
+        <div class="info">
+          <p class="bot">Bot 8</p>
+          <p class="value">{{ item.price * 10 }}</p>
+        </div>
+        <img
+          [src]="item.itemImg"
+          [alt]="item.name + ' (' + item.wearWell + ')'"
+        />
+        <p class="items-name">{{ item.name }} ({{ item.wearWell }})</p>
+        <div
+          [ngClass]="{ 'item-disabled': selectedItemIndex.includes(i) }"
+        ></div>
+      </div>
+    </div>
+  </div>
+</div>

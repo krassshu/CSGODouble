@@ -31,6 +31,8 @@ import { SupportComponent } from './support/support.component';
 import { HttpClientModule } from '@angular/common/http';
 import { DetailsComponent } from './provably-fair/details/details.component';
 import { RouletteService } from './global-services/roulette.service';
+import { WithdrawItemsComponent } from './withdraw/withdraw-items/withdraw-items.component';
+import { BotInventoryComponent } from './withdraw/bot-inventory/bot-inventory.component';
 
 @NgModule({
   declarations: [
@@ -53,6 +55,8 @@ import { RouletteService } from './global-services/roulette.service';
     AffiliatesComponent,
     SupportComponent,
     DetailsComponent,
+    WithdrawItemsComponent,
+    BotInventoryComponent,
   ],
   imports: [
     BrowserModule,
