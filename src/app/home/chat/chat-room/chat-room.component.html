@@ -17,4 +17,19 @@
     <li>## Roll countdown: 30 sec</li>
     <li>## Chat: 2 sec cooldown (3000000+total bet)</li>
   </ul>
+  <ul class="message">
+    <li *ngFor="let chat of chats">
+      <a href="{{ chat.steam }}"
+        ><p>
+          <img
+            src="{{ chat.avatar }}"
+            width="25px"
+            height="25px"
+            alt="player avatar"
+          />{{ chat.user }}:
+        </p>
+      </a>
+      <p>{{ chat.message }}</p>
+    </li>
+  </ul>
 </div>

@@ -1,7 +1,7 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
 import { Subscription } from 'rxjs';
 import { SelectedItemsService } from '../service/selected-items.service';
-import { Item } from '../service/item.interface';
+import { Item } from '../../interface/item.interface';
 import { RouletteService } from 'src/app/global-services/roulette.service';
 
 @Component({

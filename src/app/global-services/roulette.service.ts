@@ -81,7 +81,7 @@ export class RouletteService {
     this.rolling = false;
     this.rollingSubject.next(false);
     this.spinAnimationSubject.next(true);
-    const decreaseAmount = 100 / (this.progressTime / 100);
+    const decreaseAmount = 100 / (this.progressTime / 10);
 
     const intervalId = setInterval(() => {
       const currentProgress = this.progressSubject.getValue();
@@ -170,7 +170,6 @@ export class RouletteService {
 
     const currentBalance = this.balanceSubject.getValue();
     const newBalance = currentBalance + winBetAmount;
-    console.log(newBalance);
     this.balanceSubject.next(newBalance);
   }
 

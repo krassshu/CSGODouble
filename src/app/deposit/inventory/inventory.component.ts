@@ -2,7 +2,7 @@ import { Component, OnInit, OnDestroy } from '@angular/core';
 import { InventoryItemsService } from '../service/inventory-items.service';
 import { SelectedItemsService } from '../service/selected-items.service';
 import { Subscription } from 'rxjs';
-import { Item } from '../service/item.interface';
+import { Item } from '../../interface/item.interface';
 import { PlayerService } from 'src/app/global-services/player.service';
 
 @Component({

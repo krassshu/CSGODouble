@@ -39,17 +39,15 @@ export class MainContentComponent implements OnInit, OnDestroy {
     const componentWidth = this.elementRef.nativeElement.offsetWidth;
     const windowWidth = window.innerWidth;
 
-    console.log('last width: ' + this.lastComponentWidth);
-    console.log('aktualna pozycja: ' + this.currentPosition);
     if (componentWidth <= 1442) {
       const roulettePositionChange =
         this.currentPosition + (1443 - componentWidth) / 2;
-      console.log('sprawdzenie zmienionej pozycji ' + roulettePositionChange);
+
       this.rouletteService.updateRoulettePosition(roulettePositionChange);
     } else if (this.lastComponentWidth <= 1442) {
       const roulettePositionChange =
         this.currentPosition + (1443 - componentWidth) / 2;
-      console.log('sprawdzenie zmienionej pozycji ' + roulettePositionChange);
+
       this.rouletteService.updateRoulettePosition(roulettePositionChange);
     }
 

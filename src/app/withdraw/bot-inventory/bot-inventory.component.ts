@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 import { Subscription } from 'rxjs';
 import { InventoryItemsService } from 'src/app/deposit/service/inventory-items.service';
-import { Item } from 'src/app/deposit/service/item.interface';
+import { Item } from 'src/app/interface/item.interface';
 import { SelectedItemsService } from 'src/app/deposit/service/selected-items.service';
 import { PlayerService } from 'src/app/global-services/player.service';
 

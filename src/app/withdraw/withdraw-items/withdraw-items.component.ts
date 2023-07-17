@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { Subscription } from 'rxjs';
-import { Item } from 'src/app/deposit/service/item.interface';
+import { Item } from 'src/app/interface/item.interface';
 import { SelectedItemsService } from 'src/app/deposit/service/selected-items.service';
 import { RouletteService } from 'src/app/global-services/roulette.service';
 

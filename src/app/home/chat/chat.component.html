@@ -15,8 +15,14 @@
         <mat-option value="germ">Deutsche</mat-option>
       </mat-select>
     </mat-form-field>
-    <app-chat-room></app-chat-room>
-    <input type="text" placeholder="Type here to chat..." />
-    <p>Users Online: 2520</p> 
+    <app-chat-room [receivedMessage]="chatMessage.value"></app-chat-room>
+    <input
+      type="text"
+      placeholder="Type here to chat..."
+      #chatMessage
+      [(ngModel)]="messageText"
+      (keyup.enter)="sendMessage(chatMessage.value)"
+    />
+    <p>Users Online: 2520</p>
   </div>
 </aside>
