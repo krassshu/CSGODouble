@@ -146,6 +146,11 @@ export class RouletteService {
     const newBalance = currentBalance + amount;
     this.balanceSubject.next(newBalance);
   }
+  public reduceBalance(amount: number): void {
+    const currentBalance = this.balanceSubject.getValue();
+    const newBalance = currentBalance - amount;
+    this.balanceSubject.next(newBalance);
+  }
 
   public updateRoulettePosition(roulettePositionChange: number): void {
     this.roulettePositionSubject.next(roulettePositionChange);

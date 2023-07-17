@@ -3,6 +3,7 @@ import { Subscription } from 'rxjs';
 import { Item } from 'src/app/interface/item.interface';
 import { SelectedItemsService } from 'src/app/deposit/service/selected-items.service';
 import { RouletteService } from 'src/app/global-services/roulette.service';
+import { PlayerService } from 'src/app/global-services/player.service';
 
 @Component({
   selector: 'app-withdraw-items',
@@ -15,10 +16,12 @@ export class WithdrawItemsComponent {
   selectedItemsSubscribe: Subscription | undefined;
   credits: number = 0;
   balance: number = 0;
+  isLogin: boolean = false;
 
   constructor(
     private selectedItemsService: SelectedItemsService,
-    private rouletteService: RouletteService
+    private rouletteService: RouletteService,
+    private playerService: PlayerService
   ) {}
 
   ngOnInit(): void {
@@ -30,6 +33,9 @@ export class WithdrawItemsComponent {
       });
     this.rouletteService.balance$.subscribe((balance) => {
       this.balance = balance;
+    });
+    this.playerService.isLogin$.subscribe((isLogin) => {
+      this.isLogin = isLogin;
     });
   }
 
@@ -49,17 +55,19 @@ export class WithdrawItemsComponent {
     this.selectedItemsService.removeSelectedItem(item);
   }
 
-  addBalance(credits: number): void {
-    const selectedItems = [...this.selectedItems];
-    this.selectedItemsService.setRemoveItemsAfterBalance(true);
+  reduceBalance(credits: number): void {
+    if (this.isLogin) {
+      const selectedItems = [...this.selectedItems];
+      this.selectedItemsService.setRemoveItemsAfterBalance(true);
 
-    this.rouletteService.addBalance(credits);
-    this.selectedItems = [];
-    this.credits = 0;
+      this.rouletteService.reduceBalance(credits);
+      this.selectedItems = [];
+      this.credits = 0;
 
-    selectedItems.forEach((item) => {
-      this.selectedItemsService.removeSelectedItem(item);
-    });
+      selectedItems.forEach((item) => {
+        this.selectedItemsService.removeSelectedItem(item);
+      });
+    }
   }
 
   ngOnDestroy(): void {

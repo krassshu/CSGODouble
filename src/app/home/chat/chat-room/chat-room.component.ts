@@ -31,9 +31,9 @@ export class ChatRoomComponent implements OnInit, OnDestroy {
   }
 
   ngOnInit(): void {
-    this.subscription = this.playerService.isLogin$.subscribe((isLogin) => {
+    this.fakeLoad();
+    this.playerService.isLogin$.subscribe((isLogin) => {
       this.isLogin = isLogin;
-      this.fakeLoad();
     });
     this.subscription.add(
       this.chatService.message$.subscribe((message) => {
