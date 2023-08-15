@@ -2,7 +2,7 @@
   <p>Withdraws</p>
 
   <div class="deposits_deposit">
-    <button (click)="reduceBalance(credits)">
+    <button (click)="reduceBalance(credits)" [disabled]="credits > balance">
       Withdraws Items
       <p>{{ credits }} credits | Available: {{ isLogin ? balance : "0" }}</p>
     </button>

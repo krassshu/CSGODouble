@@ -9,7 +9,7 @@ import { RouletteService } from 'src/app/global-services/roulette.service';
   templateUrl: './roulette.component.html',
   styleUrls: ['./roulette.component.scss'],
 })
-export class RuletteComponent implements OnInit, OnDestroy {
+export class RouletteComponent implements OnInit, OnDestroy {
   progress: number = 100;
   seconds: number = 0;
   milliseconds: number = 0;

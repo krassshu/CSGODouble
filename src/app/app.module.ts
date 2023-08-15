@@ -8,7 +8,7 @@ import { UserComponent } from './navbar/user/user.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { ChatComponent } from './home/chat/chat.component';
 import { MainContentComponent } from './home/main-content/main-content.component';
-import { RuletteComponent } from './home/main-content/roulette/roulette.component';
+import { RouletteComponent } from './home/main-content/roulette/roulette.component';
 import { BetsComponent } from './home/main-content/bets/bets.component';
 import { MatIconModule } from '@angular/material/icon';
 import { HomeComponent } from './home/home.component';
@@ -41,7 +41,7 @@ import { BotInventoryComponent } from './withdraw/bot-inventory/bot-inventory.co
     UserComponent,
     ChatComponent,
     MainContentComponent,
-    RuletteComponent,
+    RouletteComponent,
     BetsComponent,
     HomeComponent,
     ChatRoomComponent,
