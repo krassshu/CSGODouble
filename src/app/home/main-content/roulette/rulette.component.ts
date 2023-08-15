@@ -5,9 +5,9 @@ import { RouletteInitializationService } from 'src/app/global-services/roulette-
 import { RouletteService } from 'src/app/global-services/roulette.service';
 
 @Component({
-  selector: 'app-rulette',
-  templateUrl: './rulette.component.html',
-  styleUrls: ['./rulette.component.scss'],
+  selector: 'app-roulette',
+  templateUrl: './roulette.component.html',
+  styleUrls: ['./roulette.component.scss'],
 })
 export class RuletteComponent implements OnInit, OnDestroy {
   progress: number = 100;

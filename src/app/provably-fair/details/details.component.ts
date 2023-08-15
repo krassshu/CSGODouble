@@ -19,9 +19,11 @@ export class DetailsComponent implements OnInit {
   ) {}
   ngOnInit(): void {
     const lottery = this.route.snapshot.paramMap.get('lottery');
-    this.rollsHistory = this.rouletteHistoryService.rouletteHistory.find((el) => {
-      return el.lottery == lottery;
-    });
+    this.rollsHistory = this.rouletteHistoryService.rouletteHistory.find(
+      (el) => {
+        return el.lottery == lottery;
+      }
+    );
 
     this.prepareArray();
   }
