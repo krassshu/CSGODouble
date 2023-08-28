@@ -46,7 +46,7 @@
           </tr>
         </thead>
         <tbody>
-          <tr *ngFor="let data of rouletteHistory.reverse(); let i = index">
+          <tr *ngFor="let data of rouletteHistory; let i = index">
             <td class="rolls_table-date">{{ data.date }}</td>
             <td
               class="rolls_table-seed done"

@@ -11,6 +11,6 @@ export class ProvablyFairComponent implements OnInit {
 
   constructor(private rouletteHistoryService: RouletteHistoryService) {}
   ngOnInit(): void {
-    this.rouletteHistory = this.rouletteHistoryService.rouletteHistory;
+    this.rouletteHistory = this.rouletteHistoryService.rouletteHistory.reverse();
   }
 }
