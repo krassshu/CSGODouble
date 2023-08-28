@@ -1,10 +1,7 @@
 <div class="user">
   <div class="user__logout" *ngIf="!isLogin">
     <a (click)="onLogin()">
-      <img
-        src="../../../assets/img/steam_login.png"
-        alt="sing in through steam"
-      />
+      <img src="/assets/img/steam_login.png" alt="sing in through steam" />
     </a>
   </div>
   <div class="user__login" *ngIf="isLogin">
